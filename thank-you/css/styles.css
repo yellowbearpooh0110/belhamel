@@ -72,10 +72,6 @@ body {
   margin: 0;
 }
 
-* {
-  scroll-behavior: smooth;
-}
-
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
@@ -626,7 +622,6 @@ img:last-child {
 \*------------------------------------*/
 .container {
   max-width: 1200px;
-  /* min-height: 100vh; */
   padding-right: 20px;
   padding-left: 20px;
   margin-right: auto;
@@ -1248,6 +1243,59 @@ html.fp-enabled,
   background-color: rgba(255, 255, 255, 0.25) !important;
 }
 
+.btn.js-copy {
+  position: relative;
+  min-width: 300px;
+  font-weight: 400;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.btn.js-copy span {
+  display: block;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  line-height: initial;
+}
+
+.btn.js-copy::after {
+  content: attr(data-copied);
+  width: 100%;
+  color: #0c1e3a;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.btn.js-copy.done {
+  color: transparent !important;
+}
+
+.btn.js-copy.done::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 560px) {
+  .btn.js-copy {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
 /*------------------------------------*
 	@COMPONENTS #FORMS
 \*------------------------------------*/
@@ -1761,7 +1809,7 @@ textarea.form__input {
 }
 
 .section--hero .container {
-  min-height: 100vh;
+  min-height: 700px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1819,6 +1867,9 @@ textarea.form__input {
 @media (max-width: 800px) {
   .section--hero {
     margin-top: -110px;
+  }
+  .section--hero .container {
+    min-height: 600px;
   }
 }
 
